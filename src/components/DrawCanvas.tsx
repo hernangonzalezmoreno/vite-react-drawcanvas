@@ -60,7 +60,7 @@ export class DrawCanvas extends React.Component<Props> {
     this._canvas?.addEventListener("mousemove", this.mouseMoving)
   }
 
-  mouseUp(): void {
+  mouseUp = () => {
     this._canvas?.removeEventListener("mousemove", this.mouseMoving)
   }
 
