@@ -44,6 +44,11 @@ export class DrawCanvas extends React.Component<Props> {
     this._initialPoint = point
   }
 
+  clear(): void {
+    if(!this._context) return
+    this._context.clearRect(0, 0, this.props.width, this.props.height)
+  }
+
   mouseMoving = (e: any) => {
     this.draw({
       x: e.offsetX,
@@ -67,14 +72,17 @@ export class DrawCanvas extends React.Component<Props> {
   render(): JSX.Element {
     const { idCanvas, width, height, backgroundColor } = this.props;
     return (
-      <canvas
-        id={idCanvas}
-        width={width}
-        height={height}
-        style={{
-          backgroundColor: backgroundColor || "#fff",
-        }}
-      ></canvas>
+      <>
+        <canvas
+          id={idCanvas}
+          width={width}
+          height={height}
+          style={{
+            backgroundColor: backgroundColor || "#fff",
+          }}
+        ></canvas>
+        <button onClick={() => this.clear()}>Clear</button>
+      </>
     )
   }
 }
